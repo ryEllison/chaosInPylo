@@ -1,5 +1,5 @@
 
-<img src="./fts/hex.png" width="25%" height="25%" style="display: block; margin: auto;" />
+<img src="./rmd/fts/hex.png" width="25%" height="25%" style="display: block; margin: auto;" />
 
 <!-- # Summary -->
 <!-- # Dependencies -->
