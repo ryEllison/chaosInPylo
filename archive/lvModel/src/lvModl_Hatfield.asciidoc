@@ -1,0 +1,63 @@
++*In[78]:*+
+[source, ipython3]
+----
+######
+#Hello! Input your
+α=.1 #(Reproduction rate of prey),
+β=.02 #(Rate at which predators kill prey)
+γ=.3 #(Mortality rate of predators)
+δ=.015 #(Benifit to reproduction rate of predators per prey consumed)
+n=200 #(Length of time in years that you want to model)
+τ=.001 #(Timestep in years you want for your graph)
+nPrey=10 #(Initial number of prey-species individuals)
+nPredator=10 #(Initial number of predator-species individuals)
+#Note that setting τ too high or low for your dataset might very easily break the visualiser 
+######
+
+#Library Block
+#Here I'm calling all necessary libraries
+import math
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+#Graphing/Functional Block
+#This block does a few things- it pulls from the above greek-letter objects that we previously assigned values, it pulls from n to determine how long it's x axis should be, it pulls tau to determine it's time step for generating the array we plot, and it pulls the initial population values.Basically, this bit is the "function block". 
+plt.title('Lotka-Volterra Visualizer')
+plt.xlabel ('Years Progressing Forward')
+plt.ylabel ('Number Of Living Individuals')
+#the above makes the graph human-readable
+x = []
+y = []
+y2= []
+#defining that what we're graphing and what we're graphing it against is an array
+for i in range(0, int(n/τ)):#because we want this in years, not arbitrary time steps
+    nPreyPrevious = nPrey #"nPreyPrevious is the "value previous" to the next number we're going to approximate in the array
+    nPredatorPrevious = nPredator
+    nPrey = nPreyPrevious+τ*(α*nPreyPrevious-β*nPreyPrevious*nPredatorPrevious) 
+    nPredator = nPredatorPrevious+τ*(δ*nPreyPrevious*nPredatorPrevious-γ*nPredatorPrevious)
+    y.append(nPrey)
+    y2.append(nPredator)
+    x.append(τ*i)
+    #It then finds dx/dt and dy/dt and goes ham looping over itself using forward euler.
+    
+    #Finishing Block
+    #here we spit out our graph from the array we just made-
+plt.plot(x,y,label='Prey-Species Population')
+plt.plot(x,y2,label='Predator-Species Population')
+plt.legend()
+plt.show()
+#-Hatfield
+----
+
+
++*Out[78]:*+
+----
+![png](output_0_0.png)
+----
+
+
++*In[ ]:*+
+[source, ipython3]
+----
+
+----
