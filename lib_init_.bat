@@ -23,12 +23,5 @@ echo:
 python ./dsrc/pyDependencies.py
 echo:
 
-echo [95m~! Checking and/or installing R dependencies !~[0m
-echo:
-
-::call Rscript, the interpretator to R, and dependency source code
-Rscript ./dsrc/rDependencies.R
-echo:
-
 echo [96mDependency check/installation complete[0m
 pause

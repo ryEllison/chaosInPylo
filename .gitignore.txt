@@ -1,0 +1,8 @@
+# Ignore these subdirectories
+archive/
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Ignore specific files in subdirectories
+dsrc/archive/
+rmd/fts/archive
